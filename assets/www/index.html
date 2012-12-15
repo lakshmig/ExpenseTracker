@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" type="text/css" href="jquerymobile/jquery.mobile-1.0rc2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="osdc.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function() {
+            console.log("mobileinit GLOBAL - override jQM global config values before jQM loads");
+            $.mobile.touchOverflowEnabled = true;
+            $.mobile.defaultPageTransition = 'none'; // optional - for better performance on Android
+            $.mobile.loadingMessageTextVisible = true; // optional - added to show text message
+            $.mobile.buttonMarkup.hoverDelay = 20; // optional added to remove sluggishness - jqm default 200
+        });
+    </script>
+  </head>
+ 
+  <body>
+  <!--
+   =================================================================================================
+   Unauthorized Page -> First welcome screen
+   ---------------------------
+   * Welcome page which explains why this app should be authorized
+   ================================================================================================= 
+-->   
+   <div data-role="page" id="page-unauthorized">
+
+       <div data-theme="a" data-role="header" data-position="fixed" data-tap-toggle="false">
+           <h3>  Expense Tracker</h3>
+       </div>
+
+       <div id="content" data-role="content">
+           <h2> Getting Started </h2>
+           <div>
+               <p>
+                   Authorize the App from your Google Account and you are ready to go!
+               </p>
+           </div>
+           <div id="access-code" data-authcode="">
+               <a href="#" id="auth-app" data-role="button" data-transition="none" data-theme="e"> 
+                   Authorize &amp; GO! 
+               </a>
+           </div>
+       </div><!-- /content -->
+       
+       <div data-theme="a" data-role="footer" data-position="fixed" data-tap-toggle="false">
+           <h4>
+                Powered by Google&trade; Task 
+           </h4>
+       </div>
+   </div><!-- /page -->
+<!--   -->  
+   	
+  <!-- Home Page -->	
+  <div data-role="page" id="home" class="m-page">
+   
+	<div data-role="header"> 
+		<h2>Expense Tracker</h2>
+	</div>
+	<div id="logo">
+  		<img src="images/logo_light_200_blue_bigger.png" id="osdcLogo"/> 
+  	</div>
+  	<div data-role="content">
+  	
+  	<h2>Welcome to #63 vs #89 !</h2>
+  	
+  	
+  	
+  	
+  	<div class="ui-grid-c" id="rightNow">
+  	</div> 
+  	 <a data-role="button"  onclick="getSpreadsheetData()"> Refresh  </a>
+  	<p/>
+ 		
+  	</div>
+  </body>
+    <script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="jquerymobile/jquery.mobile-1.0rc2.min.js"></script>
+     <!-- -->
+    <script type="text/javascript" src="phonegap-1.2.0.js"></script>
+     <!-- -->
+    <script type="text/javascript" src="osdc.js"></script> 
+</html>
