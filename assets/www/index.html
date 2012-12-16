@@ -5,9 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Expense Tracker</title>
     <link rel="stylesheet" type="text/css" href="jquerymobile/jquery.mobile-1.0rc2.min.css"/>
-    <link rel="stylesheet" type="text/css" href="osdc.css"/>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
-    <script type="text/javascript">
+    <script type="text/javascript" charset="utf-8" src="jquery-1.7.2.min.js"></script>
+        <!-- The following must be AFTER jquery core and BEFORE jquery mobile js -->
+        <script type="text/javascript">
         $(document).bind("mobileinit", function() {
             console.log("mobileinit GLOBAL - override jQM global config values before jQM loads");
             $.mobile.touchOverflowEnabled = true;
@@ -15,7 +17,14 @@
             $.mobile.loadingMessageTextVisible = true; // optional - added to show text message
             $.mobile.buttonMarkup.hoverDelay = 20; // optional added to remove sluggishness - jqm default 200
         });
-    </script>
+        </script>
+    <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.1.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+     <script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>        
+      
+     <script type="text/javascript" charset="utf-8" src="liquid.js"></script>
+     <script type="text/javascript" charset="utf-8" src="./helper/liquid.helper.oauth.js"></script>
   </head>
  
   <body>
@@ -28,10 +37,12 @@
 -->   
    <div data-role="page" id="page-unauthorized">
 
-       <div data-theme="a" data-role="header" data-position="fixed" data-tap-toggle="false">
-           <h3>  Expense Tracker</h3>
-       </div>
-
+    <div data-role="header"> 
+		<h2>Expense Tracker</h2>
+	</div>
+	<div id="logo">
+  		<img src="images/logo_light_200_blue_bigger.png" id="osdcLogo"/> 
+  	</div>
        <div id="content" data-role="content">
            <h2> Getting Started </h2>
            <div>
@@ -40,7 +51,7 @@
                </p>
            </div>
            <div id="access-code" data-authcode="">
-               <a href="#" id="auth-app" data-role="button" data-transition="none" data-theme="e"> 
+               <a href= id="auth-app" data-role="button" onclick="DoAuth()" data-transition="none" data-theme="e"> 
                    Authorize &amp; GO! 
                </a>
            </div>
@@ -78,9 +89,6 @@
   	</div>
   </body>
     <script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="jquerymobile/jquery.mobile-1.0rc2.min.js"></script>
      <!-- -->
-    <script type="text/javascript" src="phonegap-1.2.0.js"></script>
-     <!-- -->
-    <script type="text/javascript" src="osdc.js"></script> 
+    <script type="text/javascript" src="main.js"></script> 
 </html>
