@@ -184,6 +184,7 @@
 				})
 			    .done(function(data) {
 			    	console.log("Refresh Token Received / Found? >> " + JSON.stringify(data));
+			    	alert("Refresh Token Received / Found? >> " + JSON.stringify(data));
 			    	/* upon sucess, do a callback with the data received */
 			    	// temporary storing access token
 			    	$this.accessToken     = data.access_token;
@@ -197,6 +198,7 @@
 			   	})
 			    .fail(function(xhr, textStatus) {
 			    	console.log("Token request error ?? >>" + xhr.responseText);
+			    	alert("Token request error ?? >>" + xhr.responseText);
 			    	callback({
 			    		error: true,
 			    		message: xhr.responseText

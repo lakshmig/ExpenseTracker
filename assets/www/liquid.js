@@ -71,7 +71,7 @@
 				client_secret: "5TX6JSs1a9VoyG0q8xhh7qED", 		
 				
 				// or urn:ietf:wg:oauth:2.0:oob
-				redirect_uri: "urn:ietf:wg:oauth:2.0:oob", //http://localhost", 				 
+				redirect_uri: "http://localhost", 				 
 
 				// The URI registered with the application
 				redirect_url_token: "", 						
