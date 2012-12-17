@@ -35,8 +35,7 @@
    * Welcome page which explains why this app should be authorized
    ================================================================================================= 
 -->   
-   <div data-role="page" id="page-unauthorized">
-
+   <div data-role="page" id="page-unauthorized" class="m-page" >
     <div data-role="header"> 
 		<h2>Expense Tracker</h2>
 	</div>
@@ -51,13 +50,13 @@
                </p>
            </div>
            <div id="access-code" data-authcode="">
-               <a href="#page1" id="auth-app" data-role="button" onclick="DoAuth()" data-transition="none" data-theme="e"> 
+               <a href="#page1" id="auth-app" data-role="button" onclick="DoAuth()" data-transition="slide" data-theme="e"> 
                    Authorize &amp; GO! 
                </a>
            </div>
        </div><!-- /content -->
        
-       <div data-theme="a" data-role="footer" data-position="fixed" data-tap-toggle="false">
+       <div data-theme="a" data-role="footer" data-position="bottom" data-tap-toggle="false">
            <h4>
                 Powered by Google&trade; Task 
            </h4>
@@ -78,10 +77,7 @@
   	
   	<h2>Welcome to #63 vs #89 !</h2>
   	
-  	
-  	
-  	
-  	<div class="ui-grid-c" id="rightNow">
+   	<div class="ui-grid-c" id="rightNow">
   	</div> 
   	 <a data-role="button"  onclick="getSpreadsheetData()"> Refresh  </a>
   	<p/>

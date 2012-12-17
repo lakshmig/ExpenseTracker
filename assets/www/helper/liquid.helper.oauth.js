@@ -86,32 +86,26 @@
 			+ '&' + 'state=' + encodeURIComponent(gapiConfig.state)
 			+ '&' + 'access_type=' + encodeURIComponent(gapiConfig.access_type)
 			+ '&' + 'approval_prompt=force'; // @TODO - check if we really need this param
-			alert("Inside oauth: "+ authUri);
 			$this.callbackFunc = callBack;
 			$this.requestStatus = $this.status.NOT_DETERMINED;
 			
 			// Now open new browser
 			window.plugins.childBrowser.showWebPage(authUri, {showLocationBar : true}); 	
 			console.log("after showwebpage");
-			alert("after showwebpage");
 			window.plugins.childBrowser.onClose = $this.onAuthClose;	
 			console.log("after onClose");
-			alert("after onClose");
 			window.plugins.childBrowser.onLocationChange = $this.onAuthUrlChange;	
 			console.log("after onLocationChange");
-			alert("after onLocationChange");
 		},
 	
 		/* Auth Window closed */
 		onAuthClose: function() {
 			console.log("Auth window closed");
-			alert("Auth window closed");
 		},
 		
 		/* OAuth Successfully done */
 		onAuthSuccess: function() {
 			console.log('Auth Success?');
-			alert("Auth Success");
 		},
 		
 		/** 
@@ -129,7 +123,6 @@
 		 * @param {string} uriLocation The URI Location 
 		 */
 		onAuthUrlChange: function(uriLocation) {
-			alert("onAuthUrlChange");
 			var $this = helper.oauth;
 			
 			if(uriLocation.indexOf("code=") != -1) {
@@ -184,7 +177,6 @@
 				})
 			    .done(function(data) {
 			    	console.log("Refresh Token Received / Found? >> " + JSON.stringify(data));
-			    	alert("Refresh Token Received / Found? >> " + JSON.stringify(data));
 			    	/* upon sucess, do a callback with the data received */
 			    	// temporary storing access token
 			    	$this.accessToken     = data.access_token;
@@ -198,7 +190,6 @@
 			   	})
 			    .fail(function(xhr, textStatus) {
 			    	console.log("Token request error ?? >>" + xhr.responseText);
-			    	alert("Token request error ?? >>" + xhr.responseText);
 			    	callback({
 			    		error: true,
 			    		message: xhr.responseText
@@ -241,7 +232,7 @@
 		   var gapiConfig = $this.gapiConfig;
 		   var currentTime = (new Date()).getTime();	   
 		   
-//		   console.log("Current Access Token: " + $this.accessToken);
+		   console.log("Current Access Token: " + $this.accessToken);
 		   
 		   /* check if current Token has not expired (still valid) */
 		   if ($this.accessToken && $this.accessToken != false && 
@@ -251,7 +242,7 @@
 			   return;
 		   }
 		   
-	//	   console.log("Getting Token from Google Server... ");
+		   console.log("Getting Token from Google Server... ");
 		   
 		   /* else, get the refreshToken from local storage and get a new access Token */
 		   var refreshToken = $this.getToken();

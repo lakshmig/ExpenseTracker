@@ -30,14 +30,9 @@ function fetchImage(ele) {
 
 $(document).ready(function() {
 	 /* startApp after device ready */
-	alert("In document.ready");
 	 console.log("PhoneGap is Ready");
 	 childBrowser = new ChildBrowser();
     document.addEventListener("deviceready", startApp, false);
-    $('#home').live('pagecreate', function(event) {
-    	//getSpreadsheetData();
-    });
-	 //getSpreadsheetData();
   });
 
 
@@ -45,35 +40,25 @@ $(document).ready(function() {
  * Start the App
  */
 function startApp() {
-     alert("In startApp ");
 }
 
 function DoAuth()
 {
-	     alert("In DoAuth ");
 	    var oAuth = liquid.helper.oauth;
-	     
-	    $("#access-code").click(function(event) {
-	    	alert("In access code click ");
-	        liquid.helper.oauth.authorize(authorizeWindowChange);
-	        event.preventDefault();
-	    });
-	 
-	     
-	    if (oAuth.isAuthorized()) {
-	    	alert("in isAuthorized");
+	    if (oAuth.isAuthorized()){
 	        /* get the Expense incurred page. */
 	    	getSpreadsheetData();
 	    }
+	    else{
+	        liquid.helper.oauth.authorize(authorizeWindowChange);
+	        event.preventDefault();
+	    	}
 }
 	    
 function authorizeWindowChange(uriLocation) {
-    console.log("Location Changed: " + uriLocation); 
     var oAuth = liquid.helper.oauth;
-    alert("Inside authorizewindowchange: " + uriLocation);   
     // oAuth process is successful! 
     if (oAuth.requestStatus == oAuth.status.SUCCESS) {
-    	 alert("Inside authorizewindowchange requestStatus SUCCESS");
         var authCode = oAuth.authCode;
  
         // have the authCode, now save the refreshToken and start Page TaskList
@@ -86,7 +71,6 @@ function authorizeWindowChange(uriLocation) {
     } 
     else if (oAuth.requestStatus == oAuth.status.ERROR) 
     {
-    	alert("Inside authorizewindowchange requestStatus ERROR");
         console.log("Error >> oAuth Processing");
     } 
     else {
@@ -96,12 +80,10 @@ function authorizeWindowChange(uriLocation) {
  
 
 function getSpreadsheetData(){
-	alert("getSpreadsheetData");
 	$('#rightNow').empty();
 	$.getJSON("https://spreadsheets.google.com/feeds/cells/0AvY_HmizzMsjdFA2YmRiZGdhenNjcFFJQnJfd3RUWWc/od6/public/basic?min-col=4&max-col=9&min-row=3&max-row=3&alt=json",
 			 function(data) {
 						 $.each(data.feed.entry, function(i,entries){
-							// $('#rightNow').append('<p class="label label-success">' + names[i] + ': ' + entries.content.$t + '</p>');
 							  if (entries.content.$t > 0) {
 								  $('#rightNow').append('<h5>' + names[i] + ' <span class="badge badge-success pull-right">'+ entries.content.$t +'</span></h5>');
 							  }else {

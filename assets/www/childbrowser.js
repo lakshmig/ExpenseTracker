@@ -23,7 +23,6 @@ ChildBrowser.LOCATION_CHANGED_EVENT = 1;
  * @param options       An object that specifies additional options
  */
 ChildBrowser.prototype.showWebPage = function(url, options) {
-	alert("Showwebpage in childbrowser.js");
     options = options || {
         showLocationBar: true,
         locationBarAlign: "top"
@@ -34,13 +33,11 @@ ChildBrowser.prototype.showWebPage = function(url, options) {
 ChildBrowser.prototype.onLocationChange= function(location) {   
 	//this.currentLocation=location;   
 	console.log("\n\nPage changed to: "+this.currentLocation); 
-	alert("Page changed to: "+this.currentLocation);
 	} 
 /**
  * Close the browser opened by showWebPage.
  */
 ChildBrowser.prototype.close = function() {
-	alert("close in childbrowser.js");
     cordova.exec(null, null, "ChildBrowser", "close", []);
 };
 
@@ -52,7 +49,6 @@ ChildBrowser.prototype.close = function() {
  * @param usecordova   Load url in cordova webview [optional]
  */
 ChildBrowser.prototype.openExternal = function(url, usecordova) {
-	alert("openExternal in childbrowser.js");
     if (usecordova === true) {
         navigator.app.loadUrl(url);
     }
@@ -65,13 +61,10 @@ ChildBrowser.prototype.openExternal = function(url, usecordova) {
  * Method called when the child browser has an event.
  */
 ChildBrowser.prototype._onEvent = function(data) {
-	alert("_onEvent in childbrowser.js");
     if (data.type == ChildBrowser.CLOSE_EVENT && typeof window.plugins.childBrowser.onClose === "function") {
-    	alert("onClose in childbrowser.js");
         window.plugins.childBrowser.onClose();
     }
     if (data.type == ChildBrowser.LOCATION_CHANGED_EVENT && typeof window.plugins.childBrowser.onLocationChange === "function") {
-    	alert("In childbrowser onlocationchange");
         window.plugins.childBrowser.onLocationChange(data.location);
     }
 };
